@@ -59,27 +59,33 @@ function App() {
             onChange={e => setShowParticles(e.target.checked)}
           />
         </label>
+        {showParticles && ( // Conditionally render "Number of Photons" if showParticles is true
         <label>
-          Observer Effect:
-          <input
-            type="checkbox"
-            checked={observerEffect}
-            onChange={e => setObserverEffect(e.target.checked)}
-          />
+        Observer Effect:
+        <input
+          type="checkbox"
+          checked={observerEffect}
+          onChange={e => setObserverEffect(e.target.checked)}
+        />
         </label>
-        <label>
-          Number of Photons:
-          <input
-            type="range"
-            min="100"
-            max="20000"
-            step="100"
-            value={numPhotons}
-            onChange={e => setNumPhotons(Number(e.target.value))}
-          />
-          {numPhotons}
-        </label>
+        )}
+        {showParticles && ( // Conditionally render "Number of Photons" if showParticles is true
+          <label htmlFor="numPhotons">
+            Number of Photons:
+            <input
+              id="numPhotons"
+              type="range"
+              min="100"
+              max="20000"
+              step="100"
+              value={numPhotons}
+              onChange={e => setNumPhotons(Number(e.target.value))}
+            />
+            {numPhotons}
+          </label>
+        )}
       </div>
+      <div className="WaveInterferenceContainer">
       <WaveInterference
         wavelength={wavelength}
         distance={distance}
@@ -88,6 +94,7 @@ function App() {
         observerEffect={observerEffect}
         numPhotons={numPhotons} // Pass the number of photons to the WaveInterference component
       />
+      </div>
     </div>
   );
 }

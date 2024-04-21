@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from 'react';
 
 const ObserverEffectCanvas = ({ points, intensity, measure }) => {
   const canvasRef = useRef(null);
+  const dotRadius = 2;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -14,22 +15,26 @@ const ObserverEffectCanvas = ({ points, intensity, measure }) => {
 
     if (measure) {
       // If measurement is true, collapse the wave function (no interference pattern)
-      drawPeaks(ctx, width, height, 'red');
-    } else {
-      // Draw the standard interference pattern
-      points.forEach((point, index) => {
-        const x = (index / points.length) * width;
-        const brightness = intensity[index] * 255;
-        ctx.fillStyle = `rgb(${brightness},${brightness},${brightness})`;
-        ctx.fillRect(x, 0, 1, height);
-      });
-    }
+      drawPhotons(ctx, width, height, points, intensity);
+    } 
   }, [points, intensity, measure]);
 
-  function drawPeaks(ctx, width, height, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(width * 0.25 - 5, 0, 10, height); // left peak
-    ctx.fillRect(width * 0.75 - 5, 0, 10, height); // right peak
+  function drawPhotons(ctx, width, height, points, intensity) {
+    const scale = height/Math.max(...intensity);
+    const maxIntensity = Math.max(...intensity);
+
+    ctx.fillStyle = 'blue';
+
+    points.forEach((point, index) => {
+      const x = (index / points.length) * width;
+      const y = height - intensity[index] * scale; // Invert y-axis for canvas
+      const brightness = intensity[index] / maxIntensity; // Normalize brightness
+      const dotSize = dotRadius * brightness;
+
+      ctx.beginPath();
+      ctx.arc(x, y, dotSize, 0, 2 * Math.PI);
+      ctx.fill();
+    });
   }
 
   return <canvas ref={canvasRef} width={500} height={200} style={{ backgroundColor: '#fff' }} />;

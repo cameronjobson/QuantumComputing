@@ -1,23 +1,41 @@
 .App {
   text-align: center;
+  padding: 20px;
 }
 
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 24px;
   color: white;
 }
 
 .controls {
-  margin: 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-input[type="number"] {
-  margin: 0 10px;
-  width: 80px;
+.controls label {
+  margin-bottom: 10px;
+}
+
+.controls input[type="range"] {
+  margin-left: 10px;
+}
+
+.controls span {
+  margin-left: 10px;
+}
+
+.WaveInterferenceContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000; /* Border style, width, and color */
+  display: inline-flex;
 }
