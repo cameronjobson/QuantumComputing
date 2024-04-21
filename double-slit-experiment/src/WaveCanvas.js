@@ -37,8 +37,10 @@ const WaveCanvas = ({ points, intensity }) => {
       intensity =  mapIntensity(intensity,maxIntensity);
 
       // scale the intensity array to 0-255
-      const brightness = intensity[index] *255;  // Scale brightness to 0-255
-      const color = `rgb(${brightness},${brightness},${brightness})`;
+      const brightness = intensity[index];  // Scale brightness to 0-255
+      // then given some brightness, we take some RGB
+      const RGB = [255,0,0]
+      const color = `rgb(${brightness*RGB[0]},${brightness*RGB[1]},${brightness*RGB[2]})`;
       ctx.strokeStyle = color;
       ctx.beginPath();
       ctx.moveTo(x, 0);  // Start at the top of the canvas
