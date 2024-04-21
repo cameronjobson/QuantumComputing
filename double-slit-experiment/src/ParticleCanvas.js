@@ -1,8 +1,8 @@
 // ParticleCanvas.js
 
 import React, { useRef, useEffect } from 'react';
-
-const ParticleCanvas = ({ points, probabilityDensity, numPhotons }) => {
+import { wavelengthToColor } from './WaveCanvas'; 
+const ParticleCanvas = ({ points, probabilityDensity, numPhotons,wavelength }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -12,7 +12,15 @@ const ParticleCanvas = ({ points, probabilityDensity, numPhotons }) => {
     const height = canvas.height;
 
     ctx.clearRect(0, 0, width, height); // Clear the canvas
-    ctx.fillStyle = 'blue';
+    
+    // ctx.fillStyle = 'blue';
+    // make the background black
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, width, height);
+    
+    const color = wavelengthToColor(wavelength,1);
+    ctx.fillStyle = color;
+    console.log(color)
 
     for (let i = 0; i < numPhotons; i++) {
       const pointIndex = weightedRandom(probabilityDensity);

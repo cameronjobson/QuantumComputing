@@ -7,7 +7,7 @@ const DoubleSlit = ({
   showParticles,
   slitWidth
 }) => {
-  const localSlitWidth = slitWidth/5;
+  const localSlitWidth = slitWidth/50;
 
 
 

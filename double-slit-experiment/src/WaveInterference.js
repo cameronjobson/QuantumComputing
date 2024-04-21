@@ -25,9 +25,9 @@ const WaveInterference = ({ wavelength, distance, slitSeparation, showParticles,
   if (observerEffect) {
     return <ObserverEffectCanvas points={points} intensity={intensity} measure={true} />;
   } else if (showParticles) {
-    return <ParticleCanvas points={points} probabilityDensity={intensity} numPhotons={numPhotons} />;
+    return <ParticleCanvas points={points} probabilityDensity={intensity} numPhotons={numPhotons} wavelength={wavelength} />;
   } else {
-    return <WaveCanvas points={points} intensity={intensity} />;
+    return <WaveCanvas points={points} intensity={intensity} wavelength={wavelength} />;
   }
 };
 
