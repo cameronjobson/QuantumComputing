@@ -11,8 +11,8 @@ function App() {
   
   const [wavelength, setWavelength] = useState(700); // in nanometers
   const [distance, setDistance] = useState(2000); // distance to screen in mm
-  const [slitSeparation, setSlitSeparation] = useState(250); // slit separation in micrometers
-  const [slitWidth, setSlitWidth] = useState(.1);
+  const [slitSeparation, setSlitSeparation] = useState(800); // slit separation in micrometers
+  const [slitWidth, setSlitWidth] = useState(300);
   const [showParticles, setShowParticles] = useState(false);
     
   const [observerEffect, setObserverEffect] = useState(false);
@@ -133,24 +133,23 @@ function App() {
                 numPhotons={numPhotons}
                 slitWidth={slitWidth} // Pass the number of photons to the WaveInterference component
               />
+              <div>
+                <DoubleSlit
+                  wavelength={wavelength}
+                  distance={distance}
+                  slitSeparation={slitSeparation}
+                  showParticles={showParticles}
+                  slitWidth={slitWidth}
+                />
+              </div>
             </div>
-            <div>
-              <DoubleSlit
-                wavelength={wavelength}
-                distance={distance}
-                slitSeparation={slitSeparation}
-                showParticles={showParticles}
-                slitWidth={slitWidth}
-              />
+            <div style={{ flex: 1 }} className="html-content-column">
+              <div dangerouslySetInnerHTML={createMarkup(htmlContent)} />
             </div>
 
             {/* HTML content column */}
           </div>
         </div>
-        <div style={{ flex: 1 }} className="html-content-column">
-          <div dangerouslySetInnerHTML={createMarkup(htmlContent)} />
-        </div>
-        
       </div>
     </div>
   );

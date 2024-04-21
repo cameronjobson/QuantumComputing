@@ -102,7 +102,7 @@ const WaveCanvas = ({ points, intensity,wavelength }) => {
     });
   }, [points, intensity]);  // Redraw when points or intensity arrays change
 
-  return <canvas ref={canvasRef} width={500} height={200} style={{ backgroundColor: '#fff' }} />;
+  return <canvas ref={canvasRef} width={1000} height={200} style={{ backgroundColor: '#000000' }} />;
 };
 
 export default WaveCanvas;

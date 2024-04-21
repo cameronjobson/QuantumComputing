@@ -6,7 +6,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+
   background: #142850; /* deep blue, not too dark */
   background-image: radial-gradient(circle at top right, #2c3e50, #243b55);
 }
@@ -61,7 +61,7 @@ input[type="range"], input[type="checkbox"] {
   padding: 1rem;
   margin-top: 1rem;
   border-radius: 8px;
-  background-color: #163a5f; /* slightly lighter blue to differentiate from the main background */
+  background-color: #2a628f; /* slightly lighter blue to differentiate from the main background */
   box-shadow: 0 2px 8px rgba(22, 58, 95, 0.2);
 }
 

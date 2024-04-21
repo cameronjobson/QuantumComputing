@@ -136,7 +136,7 @@ const DoubleSlit = ({
   return (
     <div>
       <canvas
-        width={500}
+        width={1000}
         height={distance/30}
         ref={(canvas) => canvas && drawCanvas(canvas.getContext("2d"))}
       />
