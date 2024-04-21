@@ -1,10 +1,14 @@
 // App.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import './App.css';
 import WaveInterference from './WaveInterference';
 import DoubleSlit from "./diagramComponent";
 function App() {
+   const [htmlContent, setHtmlContent] = useState("");
+
+
+  
   const [wavelength, setWavelength] = useState(700); // in nanometers
   const [distance, setDistance] = useState(2000); // distance to screen in mm
   const [slitSeparation, setSlitSeparation] = useState(250); // slit separation in micrometers
@@ -13,15 +17,33 @@ function App() {
     
   const [observerEffect, setObserverEffect] = useState(false);
   const [numPhotons, setNumPhotons] = useState(10000); // default number of photons
+  useEffect(() => {
+    fetch("converted_html.html")
+      .then((response) => response.text())
+      .then((html) => {
+        setHtmlContent(html);
+        if (window.MathJax) {
+          window.MathJax.typesetPromise();
+        }
+      });
+  }, []);
+  const createMarkup = (html) => {
+    return { __html: html };
+  };
+  console.log(createMarkup(htmlContent));
+  
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Double Slit Experiment Simulation</h1>
       </header>
-      <div style={{ display: "flex", flexGrow: 1}}>
+      <div style={{ display: "flex", flexGrow: 1 }}>
         <div style={{ display: "flex" }}>
-          <div className="controls" style={{ marginRight: "1rem" ,width: '500px' }}>
+          <div
+            className="controls"
+            style={{ marginRight: "1rem", width: "500px" }}
+          >
             <label>
               Wavelength (nm):
               <input
@@ -121,8 +143,14 @@ function App() {
                 slitWidth={slitWidth}
               />
             </div>
+
+            {/* HTML content column */}
           </div>
         </div>
+        <div style={{ flex: 1 }} className="html-content-column">
+          <div dangerouslySetInnerHTML={createMarkup(htmlContent)} />
+        </div>
+        
       </div>
     </div>
   );
