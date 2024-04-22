@@ -24,6 +24,16 @@ function App() {
         setHtmlContent(html);
         if (window.MathJax) {
           window.MathJax.typesetPromise();
+        } else {
+          // If MathJax isn't loaded yet, wait a bit and then try again
+          const timeout = setTimeout(() => {
+            if (window.MathJax) {
+              window.MathJax.typesetPromise();
+            }
+          }, 3000); // Wait for 3 seconds
+
+          // Clear the timeout if the component unmounts
+          return () => clearTimeout(timeout);
         }
       });
   }, []);
