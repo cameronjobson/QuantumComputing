@@ -17,7 +17,7 @@ const ParticleCanvas = ({ points, probabilityDensity, numPhotons,wavelength }) =
     // make the background black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, width, height);
-    
+
     const color = wavelengthToColor(wavelength,1);
     ctx.fillStyle = color;
     console.log(color)
@@ -25,7 +25,8 @@ const ParticleCanvas = ({ points, probabilityDensity, numPhotons,wavelength }) =
     for (let i = 0; i < numPhotons; i++) {
       const pointIndex = weightedRandom(probabilityDensity);
       const x = (pointIndex / points.length) * width;
-      ctx.fillRect(x, Math.random() * height, 1, 1); // Simulate each photon as a small dot
+      // the above splits the possible points into a fraction of the width
+      ctx.fillRect(x, Math.random() * height, 1, 1); // Simulate each photon as a small dot at a random height
     }
   }, [points, probabilityDensity, numPhotons]); // Re-run effect when numPhotons changes
 
@@ -38,7 +39,7 @@ const ParticleCanvas = ({ points, probabilityDensity, numPhotons,wavelength }) =
     return idx;
   }
 
-  return <canvas ref={canvasRef} width={500} height={200} style={{ backgroundColor: '#fff' }} />;
+  return <canvas ref={canvasRef} width={1000} height={200} style={{ backgroundColor: '#fff' }} />;
 };
 
 export default ParticleCanvas;
