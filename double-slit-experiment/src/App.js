@@ -70,7 +70,7 @@ function App() {
               Slit Seperation (μm):
               <input
                 type="range"
-                min="800"
+                min="400"
                 max="1500"
                 value={slitSeparation}
                 onChange={(e) => setSlitSeparation(Number(e.target.value))}
@@ -96,16 +96,16 @@ function App() {
                 onChange={(e) => setShowParticles(e.target.checked)}
               />
             </label>
-            {showParticles && ( // Conditionally render "Number of Photons" if showParticles is true
               <label>
-                Observer Effect:
+                Insensity Graph:
                 <input
                   type="checkbox"
                   checked={observerEffect}
                   onChange={(e) => setObserverEffect(e.target.checked)}
+
                 />
               </label>
-            )}
+            
             {showParticles && ( // Conditionally render "Number of Photons" if showParticles is true
               <label htmlFor="numPhotons">
                 Number of Photons:

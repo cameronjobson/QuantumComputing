@@ -11,8 +11,8 @@ const DoubleSlit = ({
 
 
 
-  const visualScalingFactor = .05
-  const personalSeperation = slitSeparation * visualScalingFactor
+  const visualScalingFactor = .1
+  const personalSeperation = slitSeparation * .3
   const personalDistance = distance * visualScalingFactor
   console.log(wavelength, distance, slitSeparation, showParticles)
   console.log(personalDistance)
@@ -45,14 +45,14 @@ const DoubleSlit = ({
     // left slit
     drawLine({
       x: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
-      y: canvasHeight - 10,
+      y: canvasHeight - 20,
       x1: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
-      y1: canvasHeight + personalDistance - 10,
+      y1: canvasHeight + personalDistance -10,
       thickness: 2,
     });
     drawLine({
       x: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
-      y: canvasHeight - 10,
+      y: canvasHeight - 20,
       x1: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
       y1: canvasHeight + personalDistance - 10,
       thickness: 2,
@@ -62,20 +62,20 @@ const DoubleSlit = ({
     // right slit
     drawLine({
       x: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
-      y: canvasHeight - 10,
+      y: canvasHeight - 20,
       x1: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
       y1: canvasHeight + personalDistance - 10,
       thickness: 2,
     });
     drawLine({
       x: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
-      y: canvasHeight - 10,
+      y: canvasHeight - 20,
       x1: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
       y1: canvasHeight + personalDistance - 10,
       thickness: 2,
     });
 
-    const midHeight = canvasHeight - 10 +5;
+    const midHeight = canvasHeight - 10 ;
 
     // connecting bar
     drawLine({
