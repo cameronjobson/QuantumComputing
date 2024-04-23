@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.white-link {
+    color: white;
+    /* Additional styling if needed */
+    /* For example, you may want to remove underlines */
+    text-decoration: none;
+}
+
+.rounded-shadow {
+    border-radius: 10px; /* Adjust the value to change the roundness of the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust the values for the shadow */
+    width: 500px;
+}
