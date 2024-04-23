@@ -5,7 +5,8 @@ const DoubleSlit = ({
   distance,
   slitSeparation,
   showParticles,
-  slitWidth
+  slitWidth,
+  DoubleSlit,
 }) => {
   const localSlitWidth = slitWidth/50;
 
@@ -20,14 +21,13 @@ const DoubleSlit = ({
   
 
   const drawCanvas = (ctx) => {
-    
     // Clear canvas
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     const canvasWidth = ctx.canvas.width;
     const canvasHeight = ctx.canvas.height;
     const drawLine = (info, style = {}) => {
-      const { x, y, x1, y1,thickness = 1 } = info;
-      const { color = "black", width=thickness } = style;
+      const { x, y, x1, y1, thickness = 1 } = info;
+      const { color = "black", width = thickness } = style;
 
       ctx.beginPath();
       ctx.moveTo(x, y);
@@ -40,66 +40,93 @@ const DoubleSlit = ({
     // Draw slits
     ctx.fillStyle = "green";
 
-
-
     // left slit
-    drawLine({
-      x: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
-      y: canvasHeight - 20,
-      x1: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
-      y1: canvasHeight + personalDistance -10,
-      thickness: 2,
-    });
-    drawLine({
-      x: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
-      y: canvasHeight - 20,
-      x1: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
-      y1: canvasHeight + personalDistance - 10,
-      thickness: 2,
-    });
+    const midHeight = canvasHeight - 10;
+    if (DoubleSlit) {
+      drawLine({
+        x: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
+        y: canvasHeight - 20,
+        x1: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
+        y1: canvasHeight + personalDistance - 10,
+        thickness: 2,
+      });
+      drawLine({
+        x: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
+        y: canvasHeight - 20,
+        x1: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
+        y1: canvasHeight + personalDistance - 10,
+        thickness: 2,
+      });
 
+      // right slit
+      drawLine({
+        x: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
+        y: canvasHeight - 20,
+        x1: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
+        y1: canvasHeight + personalDistance - 10,
+        thickness: 2,
+      });
+      drawLine({
+        x: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
+        y: canvasHeight - 20,
+        x1: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
+        y1: canvasHeight + personalDistance - 10,
+        thickness: 2,
+      });
+      drawLine({
+        x: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
+        x1: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
+        y: midHeight,
+        y1: midHeight,
+      });
 
-    // right slit
-    drawLine({
-      x: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
-      y: canvasHeight - 20,
-      x1: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
-      y1: canvasHeight + personalDistance - 10,
-      thickness: 2,
-    });
-    drawLine({
-      x: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
-      y: canvasHeight - 20,
-      x1: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
-      y1: canvasHeight + personalDistance - 10,
-      thickness: 2,
-    });
+      // outer bars
+      drawLine({
+        x: 0,
+        x1: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
+        y: midHeight,
+        y1: midHeight,
+      });
+      drawLine({
+        x: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
+        x1: canvasWidth,
+        y: midHeight,
+        y1: midHeight,
+      });
+    } 
+    else {
+      drawLine({
+        x: canvasWidth / 2 - localSlitWidth / 2,
+        y: canvasHeight - 20,
+        x1: canvasWidth / 2 - localSlitWidth / 2,
+        y1: canvasHeight + personalDistance - 10,
+        thickness: 2,
+      });
+      drawLine({
+        x: canvasWidth / 2 + localSlitWidth / 2,
+        y: canvasHeight - 20,
+        x1: canvasWidth / 2 + localSlitWidth / 2,
+        y1: canvasHeight + personalDistance - 10,
+        thickness: 2,
+      });
+      drawLine({
+        x: 0,
+        x1: canvasWidth / 2  - localSlitWidth / 2,
+        y: midHeight,
+        y1: midHeight,
+      });
+      drawLine({
+        x: canvasWidth / 2  + localSlitWidth / 2,
+        x1: canvasWidth,
+        y: midHeight,
+        y1: midHeight,
+      });
 
-    const midHeight = canvasHeight - 10 ;
+    }
 
     // connecting bar
-    drawLine({
-      x: canvasWidth / 2 - personalSeperation / 2 + localSlitWidth / 2,
-      x1: canvasWidth / 2 + personalSeperation / 2 - localSlitWidth / 2,
-      y: midHeight,
-      y1: midHeight,
-    });
 
-    // outer bars
-    drawLine({
-      x: 0,
-      x1: canvasWidth / 2 - personalSeperation / 2 - localSlitWidth / 2,
-      y: midHeight,
-      y1: midHeight,
-    });
-    drawLine({
-      x: canvasWidth / 2 + personalSeperation / 2 + localSlitWidth / 2,
-      x1: canvasWidth,
-      y: midHeight,
-      y1: midHeight,
-    });
     // then we draw a horizontal line between the two slits
-
 
     // draw border around canvas
     // make them thicker
@@ -109,29 +136,24 @@ const DoubleSlit = ({
       x1: canvasWidth,
       y: 0,
       y1: 0,
-      thickness: 10
+      thickness: 10,
     });
     drawLine({
       x: 0,
       x1: 0,
       y: 0,
       y1: canvasHeight,
-      thickness: 10
+      thickness: 10,
     });
     drawLine({
       x: canvasWidth,
       x1: canvasWidth,
       y: 0,
       y1: canvasHeight,
-      thickness: 10
+      thickness: 10,
     });
- 
-    
-
-
 
     // Draw wave pattern
-
   };
   return (
     <div>

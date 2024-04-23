@@ -11,8 +11,9 @@ function App() {
   const [distance, setDistance] = useState(2000); // distance to screen in mm
   const [slitSeparation, setSlitSeparation] = useState(800); // slit separation in micrometers
   const [slitWidth, setSlitWidth] = useState(300);
-  const [showParticles, setShowParticles] = useState(false);
-    
+
+  const [DoubleSlitbool, setDoubleSlit] = useState(true);
+  const [showParticles, setShowParticles] = useState(false);  
   const [observerEffect, setObserverEffect] = useState(false);
   const [numPhotons, setNumPhotons] = useState(10000); // default number of photons
   useEffect(() => {
@@ -75,17 +76,6 @@ function App() {
                 {distance} mm
               </label>
               <label>
-                Slit Seperation (μm):
-                <input
-                  type="range"
-                  min="400"
-                  max="1500"
-                  value={slitSeparation}
-                  onChange={(e) => setSlitSeparation(Number(e.target.value))}
-                />
-                {slitSeparation} μm
-              </label>
-              <label>
                 Slit width(μm):
                 <input
                   type="range"
@@ -96,6 +86,27 @@ function App() {
                 />
                 {slitWidth} μm
               </label>
+              <label>
+                Double Slit:
+                <input
+                  type="checkbox"
+                  checked={DoubleSlitbool}
+                  onChange={(e) => setDoubleSlit(e.target.checked)}
+                />
+              </label>
+              {DoubleSlitbool && (<label>
+                Slit Seperation (μm):
+                <input
+                  type="range"
+                  min="400"
+                  max="1500"
+                  value={slitSeparation}
+                  onChange={(e) => setSlitSeparation(Number(e.target.value))}
+                />
+                {slitSeparation} μm
+              </label>
+              )}
+
               <label>
                 Show Particles:
                 <input
@@ -139,6 +150,7 @@ function App() {
                   observerEffect={observerEffect}
                   numPhotons={numPhotons}
                   slitWidth={slitWidth} // Pass the number of photons to the WaveInterference component
+                  DoubleSlit={DoubleSlitbool}
                 />
                 <div>
                   <DoubleSlit
@@ -147,6 +159,7 @@ function App() {
                     slitSeparation={slitSeparation}
                     showParticles={showParticles}
                     slitWidth={slitWidth}
+                    DoubleSlit={DoubleSlitbool}
                   />
                 </div>
               </div>
