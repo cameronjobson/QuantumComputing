@@ -6,10 +6,7 @@ import WaveInterference from './WaveInterference';
 import DoubleSlit from "./diagramComponent";
 import { MathJaxContext } from 'better-react-mathjax'; // Assuming 'better-react-mathjax' package is used
 function App() {
-   const [htmlContent, setHtmlContent] = useState("");
-
-
-  
+   const [htmlContent, setHtmlContent] = useState("");  
   const [wavelength, setWavelength] = useState(700); // in nanometers
   const [distance, setDistance] = useState(2000); // distance to screen in mm
   const [slitSeparation, setSlitSeparation] = useState(800); // slit separation in micrometers
