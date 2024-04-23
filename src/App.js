@@ -45,7 +45,14 @@ function App() {
     <MathJaxContext>
       <div className="App">
         <header className="App-header">
-          <h1>Double Slit Experiment Simulation</h1>
+          <h1>
+            <a
+              href="https://docs.google.com/presentation/d/1Qt9RGDtLpEfL9LGS6Uoy5WgXBKNLqVFI_KggCI_F36I/edit?usp=sharing"
+              class="white-link"
+            >
+              Double Slit Experiment Simulation
+            </a>
+          </h1>
         </header>
         <div style={{ display: "flex", flexGrow: 1 }}>
           <div style={{ display: "flex" }}>
@@ -94,17 +101,18 @@ function App() {
                   onChange={(e) => setDoubleSlit(e.target.checked)}
                 />
               </label>
-              {DoubleSlitbool && (<label>
-                Slit Seperation (μm):
-                <input
-                  type="range"
-                  min="400"
-                  max="1500"
-                  value={slitSeparation}
-                  onChange={(e) => setSlitSeparation(Number(e.target.value))}
-                />
-                {slitSeparation} μm
-              </label>
+              {DoubleSlitbool && (
+                <label>
+                  Slit Seperation (μm):
+                  <input
+                    type="range"
+                    min="400"
+                    max="1500"
+                    value={slitSeparation}
+                    onChange={(e) => setSlitSeparation(Number(e.target.value))}
+                  />
+                  {slitSeparation} μm
+                </label>
               )}
 
               <label>
