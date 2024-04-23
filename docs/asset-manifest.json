@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/QuantumComputing/static/css/main.2c354dfb.css",
-    "main.js": "/QuantumComputing/static/js/main.c70e450e.js",
+    "main.js": "/QuantumComputing/static/js/main.ce1d0239.js",
     "static/js/453.63930259.chunk.js": "/QuantumComputing/static/js/453.63930259.chunk.js",
     "index.html": "/QuantumComputing/index.html",
     "main.2c354dfb.css.map": "/QuantumComputing/static/css/main.2c354dfb.css.map",
-    "main.c70e450e.js.map": "/QuantumComputing/static/js/main.c70e450e.js.map",
+    "main.ce1d0239.js.map": "/QuantumComputing/static/js/main.ce1d0239.js.map",
     "453.63930259.chunk.js.map": "/QuantumComputing/static/js/453.63930259.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2c354dfb.css",
-    "static/js/main.c70e450e.js"
+    "static/js/main.ce1d0239.js"
   ]
 }
